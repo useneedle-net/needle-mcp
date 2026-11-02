@@ -3,7 +3,7 @@
   "name": "net.useneedle/needle",
   "title": "Needle",
   "description": "Find people asking for your product on Reddit, Hacker News and forums; triage and draft replies.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "websiteUrl": "https://useneedle.net/docs/mcp",
   "repository": {
     "url": "https://github.com/useneedle-net/needle-mcp",
@@ -12,15 +12,7 @@
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://api.useneedle.net/mcp",
-      "headers": [
-        {
-          "name": "Authorization",
-          "description": "Bearer ndl_live_… API key from Needle Settings → API & MCP",
-          "isRequired": true,
-          "isSecret": true
-        }
-      ]
+      "url": "https://api.useneedle.net/mcp"
     }
   ]
 }

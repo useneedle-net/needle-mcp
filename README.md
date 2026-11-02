@@ -1,20 +1,38 @@
 # Needle MCP server
 
-Connect Claude, Cursor and other MCP clients to your [Needle](https://useneedle.net) leads: see who to reply to, read a lead in full, draft a reply in your brand voice, mark leads as handled, and run new searches across Reddit, Hacker News, forums and more.
+Connect Claude, ChatGPT, Cursor and other MCP clients to your [Needle](https://useneedle.net) leads: see who to reply to, read a lead in full, draft a reply in your brand voice, mark leads as handled, and run new searches across Reddit, Hacker News, forums and more.
+
+[![Add Needle to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=needle&config=eyJ1cmwiOiJodHRwczovL2FwaS51c2VuZWVkbGUubmV0L21jcCJ9)
 
 - **URL:** `https://api.useneedle.net/mcp` (Streamable HTTP)
-- **Auth:** an API key from Needle **Settings → API & MCP** (Growth and Scale plans)
+- **Auth:** sign in with your Needle account (OAuth), or an API key from Needle **Settings → API & MCP**. Growth and Scale plans.
 - **Docs:** [useneedle.net/docs/mcp](https://useneedle.net/docs/mcp) (tools, limits, errors) and the [REST API](https://useneedle.net/docs/api)
 
 ## Set up
 
+**claude.ai and Claude Desktop:** Settings → Connectors → **Add custom connector**, paste `https://api.useneedle.net/mcp`, then **Connect** and allow access on the Needle page that opens.
+
+**ChatGPT:** add a custom connector (developer mode) with the URL `https://api.useneedle.net/mcp` and OAuth authentication, then sign in to Needle.
+
 **Claude Code**
 
 ```bash
-claude mcp add --transport http needle https://api.useneedle.net/mcp --header "Authorization: Bearer ndl_live_…"
+claude mcp add --transport http needle https://api.useneedle.net/mcp
 ```
 
-**Cursor, Windsurf and other clients** (`mcp.json`):
+Then run `/mcp`, pick **needle** and authenticate in the browser.
+
+**Cursor:** use the button above, or add this to `mcp.json` and click **Connect**:
+
+```json
+{
+  "mcpServers": {
+    "needle": { "url": "https://api.useneedle.net/mcp" }
+  }
+}
+```
+
+**With an API key** (Windsurf, scripts, or any client that cannot sign in):
 
 ```json
 {
@@ -26,6 +44,8 @@ claude mcp add --transport http needle https://api.useneedle.net/mcp --header "A
   }
 }
 ```
+
+Apps you sign in with are listed in Needle under **Settings → API & MCP → Connected apps**, where you can disconnect them.
 
 ## Skills
 
