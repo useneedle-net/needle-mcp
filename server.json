@@ -3,7 +3,7 @@
   "name": "net.useneedle/needle",
   "title": "Needle",
   "description": "Find people asking for your product on Reddit, Hacker News and forums; triage and draft replies.",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "websiteUrl": "https://useneedle.net/docs/mcp",
   "repository": {
     "url": "https://github.com/useneedle-net/needle-mcp",

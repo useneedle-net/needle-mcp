@@ -2,17 +2,20 @@
 
 Connect Claude, ChatGPT, Cursor and other MCP clients to your [Needle](https://useneedle.net) leads: see who to reply to, read a lead in full, draft a reply in your brand voice, mark leads as handled, and run new searches across Reddit, Hacker News, forums and more.
 
+**In Claude:** Needle is listed in [Claude's connector directory](https://claude.ai/directory/connectors/needle).
+
 [![Add Needle to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=needle&config=eyJ1cmwiOiJodHRwczovL2FwaS51c2VuZWVkbGUubmV0L21jcCJ9)
 
 - **URL:** `https://api.useneedle.net/mcp` (Streamable HTTP)
-- **Auth:** sign in with your Needle account (OAuth), or an API key from Needle **Settings → API & MCP**. Growth and Scale plans.
+- **Auth:** sign in with your Needle account (OAuth), or an API key from Needle **Settings → API & MCP**. Growth and Scale plans, and the free 7-day trial (full access, no card).
+- **Changes:** [CHANGELOG.md](CHANGELOG.md). Tools and fields are never renamed or removed.
 - **Docs:** [useneedle.net/docs/mcp](https://useneedle.net/docs/mcp) (tools, limits, errors) and the [REST API](https://useneedle.net/docs/api)
 
 ## Set up
 
-**claude.ai and Claude Desktop:** Settings → Connectors → **Add custom connector**, paste `https://api.useneedle.net/mcp`, then **Connect** and allow access on the Needle page that opens.
+**claude.ai and Claude Desktop:** open [Needle in Claude's connector directory](https://claude.ai/directory/connectors/needle), or go to Settings → Connectors, find **Needle** and click **Connect**. Sign in to Needle and choose **Allow**. If the directory is not available in your workspace, choose **Add custom connector** and paste `https://api.useneedle.net/mcp`.
 
-**ChatGPT:** add a custom connector (developer mode) with the URL `https://api.useneedle.net/mcp` and OAuth authentication, then sign in to Needle.
+**ChatGPT:** Plugins → **Add** → **Add custom MCP server**. Enter `https://api.useneedle.net/mcp`, keep **Authentication** on **OAuth**, tick **I understand and want to continue**, then **Create** and **Connect**. Sign in to Needle and choose **Allow**.
 
 **Claude Code**
 
@@ -45,6 +48,10 @@ Then run `/mcp`, pick **needle** and authenticate in the browser.
 }
 ```
 
+In Windsurf's `mcp_config.json`, name the URL `serverUrl` instead of `url`.
+
+To debug a connection, run the [MCP Inspector](https://github.com/modelcontextprotocol/inspector) (`npx @modelcontextprotocol/inspector`), choose **Streamable HTTP** and enter the URL.
+
 Apps you sign in with are listed in Needle under **Settings → API & MCP → Connected apps**, where you can disconnect them.
 
 ## Skills
@@ -61,6 +68,14 @@ Ready-made workflows in Agent Skills format (`skills/<name>/SKILL.md`). Each sta
 
 Needle never posts for you: drafts are text for you to review and post.
 
+## Errors
+
+A failed tool call starts with a stable code (for example `search_in_progress`), then the details as JSON, including a `doc_url` into the [error table](https://useneedle.net/docs/api#errors) and a `request_id` to quote to support.
+
+## Support
+
+Open an issue in this repository, or email support@useneedle.net.
+
 ## License
 
-MIT © VS NextGen Solutions. Questions: support@useneedle.net
+MIT © VS NextGen Solutions.
